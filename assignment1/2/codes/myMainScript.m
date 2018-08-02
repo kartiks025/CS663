@@ -2,7 +2,7 @@
 
 tic;
 %% Your code here
-img = imread('../data/canyon.png');
+img = imread('../data/church.png');
 figure('Name','Original Image');
 imshow(img);
 axis on
