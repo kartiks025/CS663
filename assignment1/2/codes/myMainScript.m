@@ -6,8 +6,8 @@ img = imread('../data/barbara.png');
 figure('Name','Original Image');
 imshow(img);
 axis on
-colormap(jet(200))
-colorbar
+% colormap(jet(200))
+% colorbar
 
 % imgRef = imread('../data/retinaRef.png');
 % figure('Name','Reference Image');
@@ -17,10 +17,10 @@ colorbar
 % colorbar
 
 figure('Name','Contrast image');
-img2 = myAHE(img,25);
-imshow(img2);
+img2 = myAHE(img,101);
+imshow(mat2gray(img2));
 axis on
-colormap(jet(200))
-colorbar
+% colormap(jet(200))
+% colorbar
 
 toc;
