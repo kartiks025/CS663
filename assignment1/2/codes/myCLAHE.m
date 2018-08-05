@@ -1,6 +1,6 @@
 %% function file for myShrinkImageByFactorD 
 %% window is always considered to be odd
-function contrastImg = myAHE(input, window)
+function contrastImg = myAHE(input, window, p)
 	[len,width,c] = size(input);
 	constant1 = (window-1)/2;
 	constant2 = (window+1)/2;
@@ -26,7 +26,11 @@ function contrastImg = myAHE(input, window)
 				% when the patch is inside
 				patch = input(minI:maxI, minJ:maxJ,k);
 				counts = hist(double(patch(:)), 0:1:255);
-				cdf = cumsum(counts)/sum(counts);
+				pdf = counts/sum(counts);
+				clippedPDF = min(pdf,p);
+				excessWeight = sum(pdf-clippedPDF);
+				finalPDF = clippedPDF + (excessWeight/256);
+				cdf = cumsum(finalPDF);
 				contrastImg(i,j,k) = round(cdf(input(i,j,k)+1)*255);
 			end
 		end
