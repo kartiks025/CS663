@@ -17,7 +17,7 @@ axis on
 % colorbar
 
 figure('Name','Contrast image');
-img2 = myAHE(img,101);
+img2 = myAHE(img,151);
 imshow(mat2gray(img2));
 axis on
 % colormap(jet(200))
