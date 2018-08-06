@@ -1,5 +1,5 @@
 % window is always considered to be odd
-function contrastImg = myAHE(input, window, p)
+function contrastImg = myCLAHE(input, window, p)
 	[len,width,c] = size(input);
 	constant1 = (window-1)/2;
 	constant2 = (window+1)/2;
