@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 %% function file for myShrinkImageByFactorD 
 function contrastImg = myHM(input,inputMask,inputRef,inputRefMask)
 	[len,width,c] = size(input);
@@ -19,5 +20,15 @@ function contrastImg = myHM(input,inputMask,inputRef,inputRefMask)
 	   contrastImg(:,:,k) = inverseCdf(round(semiContrastImg)+1)*255;
 	   contrastImg(:,:,k) = contrastImg(:,:,k).*inputMask;
 	end
+=======
+function contrastImg = myHM(input,inputRef)
+   counts = imhist(input);
+   cdf = cumsum(counts)/sum(counts);
+   semiContrastImg = cdf(input+1)*255;
+   countsRef = imhist(inputRef);
+   cdfRef = cumsum(countsRef)/sum(countsRef);
+   inverseCdf = quantile(cdfRef,256)*255;
+   contrastImg = inverseCdf(round(semiContrastImg)+1);
+>>>>>>> 56884215ad79ffa9a434b9e7affa443155a43fe2
 end
 

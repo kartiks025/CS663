@@ -1,4 +1,3 @@
-%% function file for myLinearContrastStretching 
 function contrastImg = myLinearContrastStretching(input)
    c = size(input,3);
    contrastImg = zeros(size(input));
