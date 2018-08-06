@@ -132,11 +132,7 @@ img5 = imread('../data/church.png');
 % colorbar;
 
 % figure('Name','Retina HM');
-% img4linear = img4(:);
-% img4reflinear = img4ref(:);
-% img4linearm = img4m(:);
-% img4reflinearm = img4refm(:);
-% img4cm = myHM(img4linear(img4linearm==1),img4reflinear(img4reflinearm==1));
+% img4cm = myHM(img4,img4m,imgref,img4refm);
 % imshow(uint8(img4cm));
 % axis on;
 % colormap(jet(200));
