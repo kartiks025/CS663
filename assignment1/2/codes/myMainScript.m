@@ -118,29 +118,26 @@ img5 = imread('../data/church.png');
 % colorbar;
 
 %%myHM
-figure('Name','Retina');
-imshow(uint8(img4));
-axis on;
-colormap(jet(200));
-colorbar;
+% figure('Name','Retina');
+% imshow(uint8(img4));
+% axis on;
+% colormap(jet(200));
+% colorbar;
 
-figure('Name','Retina HE');
 img4ce = myHE(img4);
-imshow(uint8(img4ce));
-axis on;
-colormap(jet(200));
-colorbar;
+% figure('Name','Retina HE');
+% imshow(uint8(img4ce));
+% axis on;
+% colormap(jet(200));
+% colorbar;
 
-figure('Name','Retina HM');
-img4linear = img4(:);
-img4reflinear = img4ref(:);
-img4linearm = img4m(:);
-img4reflinearm = img4refm(:);
-img4cm = myHM(img4linear(img4linearm==1),img4reflinear(img4reflinearm==1));
-imshow(uint8(img4cm));
-axis on;
-colormap(jet(200));
-colorbar;
+img4cm = myHM(img4,img4m,img4ref,img4refm);
+% figure('Name','Retina HM');
+% img4cm(600:603,600:603,:)
+% imshow(uint8(img4cm));
+% axis on;
+% colormap(jet(200));
+% colorbar;
 
 %%end
 toc;
