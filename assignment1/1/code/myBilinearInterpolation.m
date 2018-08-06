@@ -1,4 +1,3 @@
-%% function file for myShrinkImageByFactorD 
 function enlargedImg = myBilinearInterpolation(input)
    [len,wid] = size(input);
    len = 3 * len - 2;

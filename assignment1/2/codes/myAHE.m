@@ -1,5 +1,4 @@
-%% function file for myShrinkImageByFactorD 
-%% window is always considered to be odd
+% window is always considered to be odd
 function contrastImg = myAHE(input, window)
 	[len,width,c] = size(input);
 	constant1 = (window-1)/2;

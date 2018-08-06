@@ -133,10 +133,10 @@ colorbar;
 
 figure('Name','Retina HM');
 img4linear = img4(:);
-img4reflinear = img4ref(:);
+img4reflinear = imgref(:);
 img4linearm = img4m(:);
-img4reflinearm = img4refm(:);
-img4cm = myHM(img4linear(img4linearm==1),img4reflinear(img4reflinearm==1));
+img4reflinearm = imgrefm(:);
+img4cm = myHM(img4linear(img4linearm(:)==1),img4ref(:)(img4refm(:)==1));
 imshow(uint8(img4cm));
 axis on;
 colormap(jet(200));
