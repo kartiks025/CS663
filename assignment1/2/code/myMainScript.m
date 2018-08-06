@@ -46,32 +46,11 @@ img5b = myHE(img5);
 myDisplayImageColor(img5b,'Histogram Equalised Image');
 
 %%myHM
-imshow(uint8(img4));
-title('Retina');
-
-axis on;
-colormap(jet(200));
-colorbar;
-
+myDisplayImageColor(img4,'OriginalImage');
+img4cm = myHM(img4, img4m, img4ref, img4refm);
+myDisplayImageColor(img4cm,'Histogram Matched Image');
 img4ce = myHE(img4);
-imshow(uint8(img4ce));
-title('Retina HE');
-
-axis on;
-colormap(jet(200));
-colorbar;
-
-img4linear = img4(:);
-img4reflinear = img4ref(:);
-img4linearm = img4m(:);
-img4reflinearm = img4refm(:);
-img4cm = myHM(img4linear(img4linearm==1),img4reflinear(img4reflinearm==1));
-imshow(uint8(img4cm));
-title('Retina HM');
-
-axis on;
-colormap(jet(200));
-colorbar;
+myDisplayImageColor(img4ce,'Histogram Equalised Image');
 
 %%myAHE
 myDisplayImageGrey(img1,'Original Image');
@@ -100,22 +79,22 @@ myDisplayImageColor(img3d2,'AHE window size = 51');
 
 %%myCLAHE
 myDisplayImageGrey(img1,'Original Image');
-img1e = myCLAHE(img1,121);
+img1e = myCLAHE(img1,121,0.01);
 myDisplayImageGrey(img1e,'CLAHE threshold = 0.01');
-img1e1 = myCLAHE(img1,121);
+img1e1 = myCLAHE(img1,121,0.005);
 myDisplayImageGrey(img1e1,'CLAHE threshold = 0.005');
 
 myDisplayImageGrey(img2,'Original Image');
-img2e = myCLAHE(img2,121);
+img2e = myCLAHE(img2,121,0.01);
 myDisplayImageGrey(img2e,'CLAHE threshold = 0.01');
-img2e1 = myCLAHE(img2,121);
+img2e1 = myCLAHE(img2,121,0.005);
 myDisplayImageGrey(img2e1,'CLAHE threshold = 0.005');
 
-myDisplayImageGrey(img3,'Original Image');
-img3e = myCLAHE(img3,121);
-myDisplayImageGrey(img3e,'CLAHE threshold = 0.01');
-img3e1 = myCLAHE(img3,121);
-myDisplayImageGrey(img3e1,'CLAHE threshold = 0.005');
+myDisplayImageColor(img3,'Original Image');
+img3e = myCLAHE(img3,121,0.01);
+myDisplayImageColor(img3e,'CLAHE threshold = 0.01');
+img3e1 = myCLAHE(img3,121,0.005);
+myDisplayImageColor(img3e1,'CLAHE threshold = 0.005');
 
 
 %%end
