@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>myMainScript</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-08-06"><meta name="DC.source" content="myMainScript.m"><style type="text/css">
+      --><title>myMainScript</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-08-07"><meta name="DC.source" content="myMainScript.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,113 +66,58 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">MyMainScript</a></li><li><a href="#2">myShrinkImageByFactorD</a></li><li><a href="#3">myBilinearInterpolation</a></li><li><a href="#4">myNearestNeighborInterpolation</a></li></ul></div><h2 id="1">MyMainScript</h2><pre class="codeinput">tic;
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">MyMainScript</a></li><li><a href="#2">myShrinkImageByFactorD</a></li><li><a href="#3">myBilinearInterpolation</a></li><li><a href="#4">myNearestNeighborInterpolation</a></li><li><a href="#5">end</a></li></ul></div><h2 id="1">MyMainScript</h2><pre class="codeinput">tic;
 </pre><h2 id="2">myShrinkImageByFactorD</h2><pre class="codeinput">img = imread(<span class="string">'../data/circles_concentric.png'</span>);
-figure(<span class="string">'Name'</span>,<span class="string">'Original Image'</span>);
-imshow(img);
-axis <span class="string">on</span>;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img,<span class="string">'original image'</span>);
 
-figure(<span class="string">'Name'</span>,<span class="string">'shrinked image(d=2)'</span>);
 img2 = myShrinkImageByFactorD(img,2);
-imshow(img2);
-axis <span class="string">on</span>;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img2,<span class="string">'shrinked image(d=2)'</span>);
 
-figure(<span class="string">'Name'</span>,<span class="string">'shrinked image(d=3)'</span>);
+
 img3 = myShrinkImageByFactorD(img,3);
-imshow(img3);
-axis <span class="string">on</span>;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img3,<span class="string">'shrinked image(d=3)'</span>);
 </pre><img vspace="5" hspace="5" src="myMainScript_01.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_02.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_03.png" alt=""> <h2 id="3">myBilinearInterpolation</h2><pre class="codeinput">img4 = imread(<span class="string">'../data/barbaraSmall.png'</span>);
-figure(<span class="string">'Name'</span>,<span class="string">'Original Image'</span>);
-imshow(img4);
-axis <span class="string">on</span>;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img4,<span class="string">'original image'</span>);
 
-figure(<span class="string">'Name'</span>,<span class="string">'Bilinear Interpolated Image'</span>);
 img5 = myBilinearInterpolation(img4);
-imshow(uint8(img5));
-axis <span class="string">on</span>;
-colormap(jet(200));
-colorbar;
-</pre><img vspace="5" hspace="5" src="myMainScript_04.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_05.png" alt=""> <h2 id="4">myNearestNeighborInterpolation</h2><pre class="codeinput">figure(<span class="string">'Name'</span>,<span class="string">'Original Image'</span>);
-imshow(img4);
-axis <span class="string">on</span>;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img5,<span class="string">'Bilinear Interpolated Image'</span>);
+</pre><img vspace="5" hspace="5" src="myMainScript_04.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_05.png" alt=""> <h2 id="4">myNearestNeighborInterpolation</h2><pre class="codeinput">myDisplayImageGrey(img4,<span class="string">'original image'</span>);
 
-figure(<span class="string">'Name'</span>,<span class="string">'Nearest Neighbor Interpolated Image'</span>);
 img6 = myNearestNeighborInterpolation(img4);
-imshow(uint8(img6));
-axis <span class="string">on</span>;
-colormap(jet(200));
-colorbar;
-
-toc;
-</pre><pre class="codeoutput">Elapsed time is 3.932806 seconds.
-</pre><img vspace="5" hspace="5" src="myMainScript_06.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_07.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+myDisplayImageGrey(img6,<span class="string">'Nearest neighbor interpolated image'</span>);
+</pre><img vspace="5" hspace="5" src="myMainScript_06.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_07.png" alt=""> <h2 id="5">end</h2><pre class="codeinput">toc;
+</pre><pre class="codeoutput">Elapsed time is 3.999487 seconds.
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% MyMainScript
 
 tic;
 %% myShrinkImageByFactorD
 img = imread('../data/circles_concentric.png');
-figure('Name','Original Image');
-imshow(img);
-axis on;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img,'original image');
 
-figure('Name','shrinked image(d=2)');
 img2 = myShrinkImageByFactorD(img,2);
-imshow(img2);
-axis on;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img2,'shrinked image(d=2)');
 
-figure('Name','shrinked image(d=3)');
+
 img3 = myShrinkImageByFactorD(img,3);
-imshow(img3);
-axis on;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img3,'shrinked image(d=3)');
 
 %% myBilinearInterpolation
 
 img4 = imread('../data/barbaraSmall.png');
-figure('Name','Original Image');
-imshow(img4);
-axis on;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img4,'original image');
 
-figure('Name','Bilinear Interpolated Image');
 img5 = myBilinearInterpolation(img4);
-imshow(uint8(img5));
-axis on;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img5,'Bilinear Interpolated Image');
 
 %% myNearestNeighborInterpolation
+myDisplayImageGrey(img4,'original image');
 
-figure('Name','Original Image');
-imshow(img4);
-axis on;
-colormap(jet(200));
-colorbar;
-
-figure('Name','Nearest Neighbor Interpolated Image');
 img6 = myNearestNeighborInterpolation(img4);
-imshow(uint8(img6));
-axis on;
-colormap(jet(200));
-colorbar;
+myDisplayImageGrey(img6,'Nearest neighbor interpolated image');
 
+%% end
 toc;
 
 ##### SOURCE END #####
