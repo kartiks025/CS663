@@ -3,63 +3,28 @@
 tic;
 %% myShrinkImageByFactorD
 img = imread('../data/circles_concentric.png');
-
-imshow(img);
-title('Name','Original Image');
-axis on;
-colormap(gray(200));
-colorbar;
+myDisplayImageGrey(img,'original image');
 
 img2 = myShrinkImageByFactorD(img,2);
-imshow(img2);
-title('Name','shrinked image(d=2)');
+myDisplayImageGrey(img2,'shrinked image(d=2)');
 
-axis on;
-colormap(gray(200));
-colorbar;
 
 img3 = myShrinkImageByFactorD(img,3);
-imshow(img3);
-title('Name','shrinked image(d=3)');
-
-axis on;
-colormap(gray(200));
-colorbar;
+myDisplayImageGrey(img3,'shrinked image(d=3)');
 
 %% myBilinearInterpolation
 
 img4 = imread('../data/barbaraSmall.png');
-imshow(img4);
-title('Name','Original Image');
-
-axis on;
-colormap(gray(200));
-colorbar;
+myDisplayImageGrey(img4,'original image');
 
 img5 = myBilinearInterpolation(img4);
-imshow(uint8(img5));
-title('Name','Bilinear Interpolated Image');
-
-axis on;
-colormap(gray(200));
-colorbar;
+myDisplayImageGrey(img5,'Bilinear Interpolated Image');
 
 %% myNearestNeighborInterpolation
-
-imshow(img4);
-title('Name','Original Image');
-
-axis on;
-colormap(gray(200));
-colorbar;
+myDisplayImageGrey(img4,'original image');
 
 img6 = myNearestNeighborInterpolation(img4);
-imshow(uint8(img6));
-title('Name','Nearest Neighbor Interpolated Image');
-
-axis on;
-colormap(gray(200));
-colorbar;
+myDisplayImageGrey(img6,'Nearest neighbor interpolated image');
 
 %% end
 toc;

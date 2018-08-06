@@ -11,7 +11,6 @@ img4refm = imread('../data/retinaRefMask.png');
 img5 = imread('../data/church.png');
 
 
-<<<<<<< HEAD
 %% myLinearContrastStretching
 figure('Name','Barbara');
 imshow(uint8(img1));
