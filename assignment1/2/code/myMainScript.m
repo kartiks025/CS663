@@ -45,14 +45,14 @@ myDisplayImageColor(img5,'Original Image');
 img5b = myHE(img5);
 myDisplayImageColor(img5b,'Histogram Equalised Image');
 
-%%myHM
+%% myHM
 myDisplayImageColor(img4,'OriginalImage');
 img4cm = myHM(img4, img4m, img4ref, img4refm);
 myDisplayImageColor(img4cm,'Histogram Matched Image');
 img4ce = myHE(img4);
 myDisplayImageColor(img4ce,'Histogram Equalised Image');
 
-%%myAHE
+%% myAHE
 myDisplayImageGrey(img1,'Original Image');
 img1d = myAHE(img1,121);
 myDisplayImageGrey(img1d,'AHE window size = 121');
@@ -77,7 +77,7 @@ myDisplayImageColor(img3d1,'AHE window size = 201');
 img3d2 = myAHE(img3,51);
 myDisplayImageColor(img3d2,'AHE window size = 51');
 
-%%myCLAHE
+%% myCLAHE
 myDisplayImageGrey(img1,'Original Image');
 img1e = myCLAHE(img1,121,0.01);
 myDisplayImageGrey(img1e,'CLAHE threshold = 0.01');
@@ -97,5 +97,5 @@ img3e1 = myCLAHE(img3,121,0.005);
 myDisplayImageColor(img3e1,'CLAHE threshold = 0.005');
 
 
-%%end
+%% end
 toc;

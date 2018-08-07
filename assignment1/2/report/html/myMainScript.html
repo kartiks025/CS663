@@ -1,0 +1,285 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>myMainScript</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-08-07"><meta name="DC.source" content="myMainScript.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">MyMainScript</a></li><li><a href="#2">myLinearContrastStretching</a></li><li><a href="#3">myHE</a></li><li><a href="#4">myHM</a></li><li><a href="#5">myAHE</a></li><li><a href="#6">myCLAHE</a></li><li><a href="#7">end</a></li></ul></div><h2 id="1">MyMainScript</h2><pre class="codeinput">tic;
+img1 = imread(<span class="string">'../data/barbara.png'</span>);
+img2 = imread(<span class="string">'../data/TEM.png'</span>);
+img3 = imread(<span class="string">'../data/canyon.png'</span>);
+img4 = imread(<span class="string">'../data/retina.png'</span>);
+img4ref = imread(<span class="string">'../data/retinaRef.png'</span>);
+img4m = imread(<span class="string">'../data/retinaMask.png'</span>);
+img4refm = imread(<span class="string">'../data/retinaRefMask.png'</span>);
+img5 = imread(<span class="string">'../data/church.png'</span>);
+</pre><h2 id="2">myLinearContrastStretching</h2><pre class="codeinput">myDisplayImageGrey(img1,<span class="string">'Original Image'</span>);
+img1a = myLinearContrastStretching(img1);
+myDisplayImageGrey(img1a,<span class="string">'Linear Contrast Stretched'</span>);
+
+myDisplayImageGrey(img2,<span class="string">'Original Image'</span>);
+img2a = myLinearContrastStretching(img2);
+myDisplayImageGrey(img2a,<span class="string">'Linear Contrast Stretched'</span>);
+
+myDisplayImageColor(img3,<span class="string">'Original Image'</span>);
+img3a = myLinearContrastStretching(img3);
+myDisplayImageColor(img3a,<span class="string">'Linear Contrast Stretched'</span>);
+
+myDisplayImageColor(img5,<span class="string">'Original Image'</span>);
+img5a = myLinearContrastStretching(img5);
+myDisplayImageColor(img5a,<span class="string">'Linear Contrast Stretched'</span>);
+</pre>
+There is not much difference in the linear contrast stretcheded image and the original image. This is due to the fact that the formula considers only the global minimum and maximum of the image. Which in these images are already their extreme values.
+formula : (Intensity - minIntensity)*(255/(maxIntensity - minIntensity)). 
+The clouds have almost value equal to 255 and the darker regions have close to 0 in each channel.<img vspace="5" hspace="5" src="myMainScript_01.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_02.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_03.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_04.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_05.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_06.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_07.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_08.png" alt=""> <h2 id="3">myHE</h2><pre class="codeinput">myDisplayImageGrey(img1,<span class="string">'Original Image'</span>);
+img1b = myHE(img1);
+myDisplayImageGrey(img1b,<span class="string">'Histogram Equalised Image'</span>);
+
+myDisplayImageGrey(img2,<span class="string">'Original Image'</span>);
+img2b = myHE(img2);
+myDisplayImageGrey(img2b,<span class="string">'Histogram Equalised Image'</span>);
+
+myDisplayImageColor(img3,<span class="string">'Original Image'</span>);
+img3b = myHE(img3);
+myDisplayImageColor(img3b,<span class="string">'Histogram Equalised Image'</span>);
+
+myDisplayImageColor(img5,<span class="string">'Original Image'</span>);
+img5b = myHE(img5);
+myDisplayImageColor(img5b,<span class="string">'Histogram Equalised Image'</span>);
+</pre>
+The clouds in the top have blended in the processed image while they were quite clear and distinct in the original image. This can be attibuted to the fact that clouds already have maximum intensity in all the channels but the sky only has that in the blue channel, and in the processed image the intensity for other channels have also increased. The colors of the buildings have popped out and are visibly bright in the processed image.
+<img vspace="5" hspace="5" src="myMainScript_09.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_10.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_11.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_12.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_13.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_14.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_15.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_16.png" alt=""> 
+
+<h2 id="4">myHM</h2><pre class="codeinput">
+myDisplayImageColor(img4,<span class="string">'OriginalImage'</span>);
+img4cm = myHM(img4, img4m, img4ref, img4refm);
+myDisplayImageColor(img4cm,<span class="string">'Histogram Matched Image'</span>);
+img4ce = myHE(img4);
+myDisplayImageColor(img4ce,<span class="string">'Histogram Equalised Image'</span>);
+
+
+</pre>
+<img vspace="5" hspace="5" src="myMainScript_17.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_18.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_19.png" alt="">
+
+<h2 id="5">myAHE</h2><pre class="codeinput">
+myDisplayImageGrey(img1,<span class="string">'Original Image'</span>);
+img1d = myAHE(img1,121);
+myDisplayImageGrey(img1d,<span class="string">'AHE window size = 121'</span>);
+img1d1 = myAHE(img1,201);
+myDisplayImageGrey(img1d1,<span class="string">'AHE window size = 201'</span>);
+img1d2 = myAHE(img1,51);
+myDisplayImageGrey(img1d2,<span class="string">'AHE window size = 51'</span>);
+
+myDisplayImageGrey(img2,<span class="string">'Original Image'</span>);
+img2d = myAHE(img2,121);
+myDisplayImageGrey(img2d,<span class="string">'AHE window size = 121'</span>);
+img2d1 = myAHE(img2,201);
+myDisplayImageGrey(img2d1,<span class="string">'AHE window size = 201'</span>);
+img2d2 = myAHE(img2,51);
+myDisplayImageGrey(img2d2,<span class="string">'AHE window size = 51'</span>);
+
+myDisplayImageColor(img3,<span class="string">'Original Image'</span>);
+img3d = myAHE(img3,121);
+myDisplayImageColor(img3d,<span class="string">'AHE window size = 121'</span>);
+img3d1 = myAHE(img3,201);
+myDisplayImageColor(img3d1,<span class="string">'AHE window size = 201'</span>);
+img3d2 = myAHE(img3,51);
+myDisplayImageColor(img3d2,<span class="string">'AHE window size = 51'</span>);
+</pre>
+<img vspace="5" hspace="5" src="myMainScript_20.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_21.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_22.png" alt="">
+<img vspace="5" hspace="5" src="myMainScript_23.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_24.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_25.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_26.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_27.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_28.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_29.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_30.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_31.png" alt=""> 
+
+<h2 id="6">myCLAHE</h2><pre class="codeinput">
+myDisplayImageGrey(img1,<span class="string">'Original Image'</span>);
+img1e = myCLAHE(img1,121,0.01);
+myDisplayImageGrey(img1e,<span class="string">'CLAHE threshold = 0.01'</span>);
+img1e1 = myCLAHE(img1,121,0.005);
+myDisplayImageGrey(img1e1,<span class="string">'CLAHE threshold = 0.005'</span>);
+
+myDisplayImageGrey(img2,<span class="string">'Original Image'</span>);
+img2e = myCLAHE(img2,121,0.01);
+myDisplayImageGrey(img2e,<span class="string">'CLAHE threshold = 0.01'</span>);
+img2e1 = myCLAHE(img2,121,0.005);
+myDisplayImageGrey(img2e1,<span class="string">'CLAHE threshold = 0.005'</span>);
+
+myDisplayImageColor(img3,<span class="string">'Original Image'</span>);
+img3e = myCLAHE(img3,121,0.01);
+myDisplayImageColor(img3e,<span class="string">'CLAHE threshold = 0.01'</span>);
+img3e1 = myCLAHE(img3,121,0.005);
+myDisplayImageColor(img3e1,<span class="string">'CLAHE threshold = 0.005'</span>);
+</pre>
+<img vspace="5" hspace="5" src="myMainScript_32.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_33.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_34.png" alt="">
+<img vspace="5" hspace="5" src="myMainScript_35.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_36.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_37.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_38.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_39.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_40.png" alt="">
+
+<h2 id="7">end</h2><pre class="codeinput">
+toc;
+</pre><pre class="codeoutput">
+Elapsed time is 4875.517604 seconds.
+</pre>   <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MyMainScript
+
+tic;
+img1 = imread('../data/barbara.png');
+img2 = imread('../data/TEM.png');
+img3 = imread('../data/canyon.png');
+img4 = imread('../data/retina.png');
+img4ref = imread('../data/retinaRef.png');
+img4m = imread('../data/retinaMask.png');
+img4refm = imread('../data/retinaRefMask.png');
+img5 = imread('../data/church.png');
+
+
+%% myLinearContrastStretching
+myDisplayImageGrey(img1,'Original Image');
+img1a = myLinearContrastStretching(img1);
+myDisplayImageGrey(img1a,'Linear Contrast Stretched');
+
+myDisplayImageGrey(img2,'Original Image');
+img2a = myLinearContrastStretching(img2);
+myDisplayImageGrey(img2a,'Linear Contrast Stretched');
+
+myDisplayImageColor(img3,'Original Image');
+img3a = myLinearContrastStretching(img3);
+myDisplayImageColor(img3a,'Linear Contrast Stretched');
+
+myDisplayImageColor(img5,'Original Image');
+img5a = myLinearContrastStretching(img5);
+myDisplayImageColor(img5a,'Linear Contrast Stretched');
+
+%% myHE
+myDisplayImageGrey(img1,'Original Image');
+img1b = myHE(img1);
+myDisplayImageGrey(img1b,'Histogram Equalised Image');
+
+myDisplayImageGrey(img2,'Original Image');
+img2b = myHE(img2);
+myDisplayImageGrey(img2b,'Histogram Equalised Image');
+
+myDisplayImageColor(img3,'Original Image');
+img3b = myHE(img3);
+myDisplayImageColor(img3b,'Histogram Equalised Image');
+
+myDisplayImageColor(img5,'Original Image');
+img5b = myHE(img5);
+myDisplayImageColor(img5b,'Histogram Equalised Image');
+
+%% myHM
+myDisplayImageColor(img4,'OriginalImage');
+img4cm = myHM(img4, img4m, img4ref, img4refm);
+myDisplayImageColor(img4cm,'Histogram Matched Image');
+img4ce = myHE(img4);
+myDisplayImageColor(img4ce,'Histogram Equalised Image');
+
+%% myAHE
+myDisplayImageGrey(img1,'Original Image');
+img1d = myAHE(img1,121);
+myDisplayImageGrey(img1d,'AHE window size = 121');
+img1d1 = myAHE(img1,201);
+myDisplayImageGrey(img1d1,'AHE window size = 201');
+img1d2 = myAHE(img1,51);
+myDisplayImageGrey(img1d2,'AHE window size = 51');
+
+myDisplayImageGrey(img2,'Original Image');
+img2d = myAHE(img2,121);
+myDisplayImageGrey(img2d,'AHE window size = 121');
+img2d1 = myAHE(img2,201);
+myDisplayImageGrey(img2d1,'AHE window size = 201');
+img2d2 = myAHE(img2,51);
+myDisplayImageGrey(img2d2,'AHE window size = 51');
+
+myDisplayImageColor(img3,'Original Image');
+img3d = myAHE(img3,121);
+myDisplayImageColor(img3d,'AHE window size = 121');
+img3d1 = myAHE(img3,201);
+myDisplayImageColor(img3d1,'AHE window size = 201');
+img3d2 = myAHE(img3,51);
+myDisplayImageColor(img3d2,'AHE window size = 51');
+
+%% myCLAHE
+myDisplayImageGrey(img1,'Original Image');
+img1e = myCLAHE(img1,121,0.01);
+myDisplayImageGrey(img1e,'CLAHE threshold = 0.01');
+img1e1 = myCLAHE(img1,121,0.005);
+myDisplayImageGrey(img1e1,'CLAHE threshold = 0.005');
+
+myDisplayImageGrey(img2,'Original Image');
+img2e = myCLAHE(img2,121,0.01);
+myDisplayImageGrey(img2e,'CLAHE threshold = 0.01');
+img2e1 = myCLAHE(img2,121,0.005);
+myDisplayImageGrey(img2e1,'CLAHE threshold = 0.005');
+
+myDisplayImageColor(img3,'Original Image');
+img3e = myCLAHE(img3,121,0.01);
+myDisplayImageColor(img3e,'CLAHE threshold = 0.01');
+img3e1 = myCLAHE(img3,121,0.005);
+myDisplayImageColor(img3e1,'CLAHE threshold = 0.005');
+
+
+%% end
+toc;
+
+##### SOURCE END #####
+--></body></html>
