@@ -1,0 +1,4 @@
+function rsmdVal = rsmd(img1,img2)
+    
+    sqrt(sum(sum((out-image).^2))/(len*wid));
+end
