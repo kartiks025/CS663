@@ -45,14 +45,14 @@ myDisplayImageColor(img5,'Original Image');
 img5b = myHE(img5);
 myDisplayImageColor(img5b,'Histogram Equalised Image');
 
-%%myHM
+%% myHM
 myDisplayImageColor(img4,'OriginalImage');
 img4cm = myHM(img4, img4m, img4ref, img4refm);
 myDisplayImageColor(img4cm,'Histogram Matched Image');
 img4ce = myHE(img4);
 myDisplayImageColor(img4ce,'Histogram Equalised Image');
 
-%%myAHE
+%% myAHE
 myDisplayImageGrey(img1,'Original Image');
 img1d = myAHE(img1,121);
 myDisplayImageGrey(img1d,'AHE window size = 121');
