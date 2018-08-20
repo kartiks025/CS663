@@ -10,10 +10,10 @@ myColorScale = [ [0:1/(myNumOfColors-1):1]' , ...
 [0:1/(myNumOfColors-1):1]', [0:1/(myNumOfColors-1):1]'];
 
 %% Filtering Barbara image
-load('../data/barbara.mat');
+load('../data/honeyCombReal_Noisy.mat');
 
 imshow(mat2gray(imageOrig));
-imshow(mat2gray(imgCorrupt));	
+% imshow(mat2gray(imgCorrupt));	
 % imagesc (single (mat2gray(imageOrig))); 
 % colormap (myColorScale);
 % colormap jet;
