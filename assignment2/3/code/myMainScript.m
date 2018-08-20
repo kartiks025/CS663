@@ -25,6 +25,14 @@ out2 = myPatchBasedFiltering(imgCorrupt, patchSize, windowSize, h*1.1);
 rsmd2 = myRsmd(out2,imageOrig);
 display(rsmd2);
 
+figure;
+gaussianFilter = fspecial('gaussian', patchSize, double(patchSize(1))/6);
+imshow(gaussianFilter,'InitialMagnification','fit');
+title("Mask for Isotropic Patches")
+colormap(gray(200));
+axis on;
+colorbar;
+
 
 %% Filtering Grass image
 imageOrig = im2double(imread('../data/grass.png'));
@@ -47,6 +55,14 @@ out2 = myPatchBasedFiltering(imgCorrupt, patchSize, windowSize, h*1.1);
 rsmd2 = myRsmd(out2,imageOrig);
 display(rsmd2);
 
+figure;
+gaussianFilter = fspecial('gaussian', patchSize, double(patchSize(1))/6);
+imshow(gaussianFilter,'InitialMagnification','fit');
+title("Mask for Isotropic Patches")
+colormap(gray(200));
+axis on;
+colorbar;
+
 %% Filtering Honey Comb image
 imageOrig = im2double(imread('../data/honeyCombReal.png'));
 [len, wid] = size(imageOrig);
@@ -67,5 +83,13 @@ display(rsmd1);
 out2 = myPatchBasedFiltering(imgCorrupt, patchSize, windowSize, h*1.1);
 rsmd2 = myRsmd(out2,imageOrig);
 display(rsmd2);
+
+figure;
+gaussianFilter = fspecial('gaussian', patchSize, double(patchSize(1))/6);
+imshow(gaussianFilter,'InitialMagnification','fit');
+title("Mask for Isotropic Patches")
+colormap(gray(200));
+axis on;
+colorbar;
 
 toc;

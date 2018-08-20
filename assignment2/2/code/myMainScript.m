@@ -44,8 +44,8 @@ image = im2double(imread('../data/grass.png'));
 [len, wid] = size(image);
 corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
 
-sigmaSpace = 0.63;
-sigmaIntensity = 1;
+sigmaSpace = 0.71;
+sigmaIntensity = 0.31;
 windowSize = 2;
 out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
 rmsd = myRmsd(out,image);
@@ -76,14 +76,12 @@ colormap(gray(200));
 axis on;
 colorbar;
 
-toc;
-
 %% Honey Comb Real
 image = im2double(imread('../data/honeyCombReal.png'));
 [len, wid] = size(image);
 corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
 
-sigmaSpace = 0.79;
+sigmaSpace = 0.82;
 sigmaIntensity = 0.27;
 windowSize = 3;
 out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);

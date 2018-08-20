@@ -104,46 +104,26 @@ colormap(gray(200));
 axis <span class="string">on</span>;
 colorbar;
 </pre><pre class="codeoutput">
-rmsd =
-
-  single
-
-    3.2814
+Optimal -> rmsd = 3.2807 (sigmaSpace = 1.6, sigmaIntensity = 13.5, windowSize = 9)
 
 
-rmsd1 =
-
-  single
-
-    3.2831
+0.9*sigmaSpace -> rmsd1 = 3.2824 (sigmaSpace = 1.6*0.9, sigmaIntensity = 13.5, windowSize = 9)
 
 
-rmsd2 =
-
-  single
-
-    3.2853
+1.1*sigmaSpace -> rmsd2 = 3.2847 (sigmaSpace = 1.6*0.1, sigmaIntensity = 13.5, windowSize = 9)
 
 
-rmsd3 =
-
-  single
-
-    3.3103
+0.9*sigmaIntensity -> rmsd3 = 3.3102 (sigmaSpace = 1.6, sigmaIntensity = 13.5*0.9, windowSize = 9)
 
 
-rmsd4 =
-
-  single
-
-    3.2904
+1.1*sigmaIntensity -> rmsd4 = 3.2895 (sigmaSpace = 1.6, sigmaIntensity = 13.5*1.1, windowSize = 9)
 
 </pre><img vspace="5" hspace="5" src="myMainScript_01.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_02.png" alt=""> <h2 id="3">Grass</h2><pre class="codeinput">image = im2double(imread(<span class="string">'../data/grass.png'</span>));
 [len, wid] = size(image);
 corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
 
-sigmaSpace = 0.63;
-sigmaIntensity = 1;
+sigmaSpace = 0.71;
+sigmaIntensity = 0.31;
 windowSize = 2;
 out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
 rmsd = myRmsd(out,image);
@@ -173,39 +153,26 @@ title(<span class="string">"Spatial Gaussian Mask"</span>)
 colormap(gray(200));
 axis <span class="string">on</span>;
 colorbar;
-
-toc;
 </pre><pre class="codeoutput">
-rmsd =
-
-    0.0300
+Optimal -> rmsd = 0.0289 (sigmaSpace = 0.71, sigmaIntensity = 0.31, windowSize = 5)
 
 
-rmsd1 =
-
-    0.0304
+0.9*sigmaSpace -> rmsd1 = 0.0293 (sigmaSpace = 0.71*0.9, sigmaIntensity = 0.31, windowSize = 5)
 
 
-rmsd2 =
-
-    0.0306
+1.1*sigmaSpace -> rmsd2 = 0.0290 (sigmaSpace = 0.71*0.1, sigmaIntensity = 0.31, windowSize = 5)
 
 
-rmsd3 =
-
-    0.0299
+0.9*sigmaIntensity -> rmsd3 = 0.0289 (sigmaSpace = 0.71, sigmaIntensity = 0.31*0.9, windowSize = 5)
 
 
-rmsd4 =
+1.1*sigmaIntensity -> rmsd4 = 0.0289 (sigmaSpace = 0.71, sigmaIntensity = 0.31*1.1, windowSize = 5)
 
-    0.0300
-
-Elapsed time is 8.302817 seconds.
 </pre><img vspace="5" hspace="5" src="myMainScript_03.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_04.png" alt=""> <h2 id="4">Honey Comb Real</h2><pre class="codeinput">image = im2double(imread(<span class="string">'../data/honeyCombReal.png'</span>));
 [len, wid] = size(image);
 corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
 
-sigmaSpace = 0.79;
+sigmaSpace = 0.82;
 sigmaIntensity = 0.27;
 windowSize = 3;
 out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
@@ -239,31 +206,21 @@ colorbar;
 
 toc;
 </pre><pre class="codeoutput">
-rmsd =
-
-    0.0289
+Optimal -> rmsd = 0.0288 (sigmaSpace = 0.82, sigmaIntensity = 0.27, windowSize = 7)
 
 
-rmsd1 =
-
-    0.0295
+0.9*sigmaSpace -> rmsd1 = 0.0292 (sigmaSpace = 0.82*0.9, sigmaIntensity = 0.27, windowSize = 7)
 
 
-rmsd2 =
-
-    0.0288
+1.1*sigmaSpace -> rmsd2 = 0.0289 (sigmaSpace = 0.82*0.1, sigmaIntensity = 0.27, windowSize = 7)
 
 
-rmsd3 =
-
-    0.0289
+0.9*sigmaIntensity -> rmsd3 = 0.0288 (sigmaSpace = 0.82, sigmaIntensity = 0.27*0.9, windowSize = 7)
 
 
-rmsd4 =
+1.1*sigmaIntensity -> rmsd4 = 0.0290 (sigmaSpace = 0.82, sigmaIntensity = 0.27*1.1, windowSize = 7)
 
-    0.0290
-
-Elapsed time is 11.168391 seconds.
+Elapsed time is 12.311102 seconds.
 </pre><img vspace="5" hspace="5" src="myMainScript_05.png" alt=""> <img vspace="5" hspace="5" src="myMainScript_06.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% MyMainScript
@@ -312,8 +269,8 @@ image = im2double(imread('../data/grass.png'));
 [len, wid] = size(image);
 corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
 
-sigmaSpace = 0.63;
-sigmaIntensity = 1;
+sigmaSpace = 0.71;
+sigmaIntensity = 0.31;
 windowSize = 2;
 out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
 rmsd = myRmsd(out,image);
@@ -344,14 +301,12 @@ colormap(gray(200));
 axis on;
 colorbar;
 
-toc;
-
 %% Honey Comb Real
 image = im2double(imread('../data/honeyCombReal.png'));
 [len, wid] = size(image);
 corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
 
-sigmaSpace = 0.79;
+sigmaSpace = 0.82;
 sigmaIntensity = 0.27;
 windowSize = 3;
 out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
