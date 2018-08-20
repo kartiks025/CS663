@@ -8,28 +8,111 @@ image = imageData.imageOrig;
 corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
 
 sigmaSpace = 1.6;
-sigmaIntensity = 13.4;
+sigmaIntensity = 13.5;
 windowSize = 4;
 out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
-rsmd = myRsmd(out,image);
-display(rsmd);
+rmsd = myRmsd(out,image);
+display(rmsd);
 myDisplayThreeImage(image,corruptedImage,out);
 
 out1 = myBilateralFiltering(corruptedImage, 0.9*sigmaSpace, sigmaIntensity, windowSize);
-rsmd1 = myRsmd(out1,image);
-display(rsmd1);
+rmsd1 = myRmsd(out1,image);
+display(rmsd1);
 
 out2 = myBilateralFiltering(corruptedImage, 1.1*sigmaSpace, sigmaIntensity, windowSize);
-rsmd2 = myRsmd(out2,image);
-display(rsmd2);
+rmsd2 = myRmsd(out2,image);
+display(rmsd2);
 
 out3 = myBilateralFiltering(corruptedImage, sigmaSpace, 0.9*sigmaIntensity, windowSize);
-rsmd3 = myRsmd(out3,image);
-display(rsmd3);
+rmsd3 = myRmsd(out3,image);
+display(rmsd3);
 
 out4 = myBilateralFiltering(corruptedImage, sigmaSpace, 1.1*sigmaIntensity, windowSize);
-rsmd4 = myRsmd(out4,image);
-display(rsmd4);
+rmsd4 = myRmsd(out4,image);
+display(rmsd4);
 
+figure;
+filter = fspecial('gaussian',2*windowSize+1 ,sigmaSpace);
+imshow(filter,'InitialMagnification','fit');
+title("Spatial Gaussian Mask")
+colormap(gray(200));
+axis on;
+colorbar;
+
+%% Grass
+image = im2double(imread('../data/grass.png'));
+[len, wid] = size(image);
+corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
+
+sigmaSpace = 0.63;
+sigmaIntensity = 1;
+windowSize = 2;
+out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
+rmsd = myRmsd(out,image);
+display(rmsd);
+myDisplayThreeImage(image,corruptedImage,out);
+
+out1 = myBilateralFiltering(corruptedImage, 0.9*sigmaSpace, sigmaIntensity, windowSize);
+rmsd1 = myRmsd(out1,image);
+display(rmsd1);
+
+out2 = myBilateralFiltering(corruptedImage, 1.1*sigmaSpace, sigmaIntensity, windowSize);
+rmsd2 = myRmsd(out2,image);
+display(rmsd2);
+
+out3 = myBilateralFiltering(corruptedImage, sigmaSpace, 0.9*sigmaIntensity, windowSize);
+rmsd3 = myRmsd(out3,image);
+display(rmsd3);
+
+out4 = myBilateralFiltering(corruptedImage, sigmaSpace, 1.1*sigmaIntensity, windowSize);
+rmsd4 = myRmsd(out4,image);
+display(rmsd4);
+
+figure;
+filter = fspecial('gaussian',2*windowSize+1 ,sigmaSpace);
+imshow(filter,'InitialMagnification','fit');
+title("Spatial Gaussian Mask")
+colormap(gray(200));
+axis on;
+colorbar;
+
+toc;
+
+%% Honey Comb Real
+image = im2double(imread('../data/honeyCombReal.png'));
+[len, wid] = size(image);
+corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
+
+sigmaSpace = 0.79;
+sigmaIntensity = 0.27;
+windowSize = 3;
+out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
+rmsd = myRmsd(out,image);
+display(rmsd);
+myDisplayThreeImage(image,corruptedImage,out);
+
+out1 = myBilateralFiltering(corruptedImage, 0.9*sigmaSpace, sigmaIntensity, windowSize);
+rmsd1 = myRmsd(out1,image);
+display(rmsd1);
+
+out2 = myBilateralFiltering(corruptedImage, 1.1*sigmaSpace, sigmaIntensity, windowSize);
+rmsd2 = myRmsd(out2,image);
+display(rmsd2);
+
+out3 = myBilateralFiltering(corruptedImage, sigmaSpace, 0.9*sigmaIntensity, windowSize);
+rmsd3 = myRmsd(out3,image);
+display(rmsd3);
+
+out4 = myBilateralFiltering(corruptedImage, sigmaSpace, 1.1*sigmaIntensity, windowSize);
+rmsd4 = myRmsd(out4,image);
+display(rmsd4);
+
+figure;
+filter = fspecial('gaussian',2*windowSize+1 ,sigmaSpace);
+imshow(filter,'InitialMagnification','fit');
+title("Spatial Gaussian Mask")
+colormap(gray(200));
+axis on;
+colorbar;
 
 toc;

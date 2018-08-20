@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>myDisplayImageGrey</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-08-20"><meta name="DC.source" content="myDisplayImageGrey.m"><style type="text/css">
+      --><title>myMainScript</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-08-20"><meta name="DC.source" content="myMainScript.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,23 +66,46 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> myDisplayImageGrey(img,title1)
-    imshow (mat2gray(img));
-    title(title1);
-	colormap(gray(200));
-	axis <span class="string">on</span>;
-	colorbar;
-</pre><pre class="codeoutput error">Not enough input arguments.
-
-Error in myDisplayImageGrey (line 2)
-    imshow (mat2gray(img));
-</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">MyMainScript</a></li><li><a href="#2">Super Moon Crop</a></li><li><a href="#3">Lion Crop</a></li></ul></div><h2 id="1">MyMainScript</h2><pre class="codeinput">tic;
+</pre><h2 id="2">Super Moon Crop</h2><pre class="codeinput">imageData = load(<span class="string">'../data/superMoonCrop.mat'</span>);
+image = imageData.imageOrig;
+stretchedImage = myLinearContrastStretching(image);
+sharpImage = myUnsharpMasking(image,1.1,9,1.1);
+sharpImage = myLinearContrastStretching(sharpImage);
+myDisplayTwoImage(stretchedImage,sharpImage);
+</pre>
+Sigma = 1.1
+Window Size = 9
+Scaling Factor = 1.1<img vspace="5" hspace="5" src="myMainScript_01.png" alt=""> <h2 id="3">Lion Crop</h2><pre class="codeinput">imageData = load(<span class="string">'../data/lionCrop.mat'</span>);
+image = imageData.imageOrig;
+stretchedImage = myLinearContrastStretching(image);
+sharpImage = myUnsharpMasking(image,1.1,9,1.6);
+sharpImage = myLinearContrastStretching(sharpImage);
+myDisplayTwoImage(stretchedImage,sharpImage);
+toc;
+</pre>
+Sigma = 1.1
+Window Size = 9
+Scaling Factor = 1.6<pre class="codeoutput">Elapsed time is 1.680347 seconds.
+</pre><img vspace="5" hspace="5" src="myMainScript_02.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-function myDisplayImageGrey(img,title1)
-    imshow (mat2gray(img));
-    title(title1);
-	colormap(gray(200));
-	axis on;
-	colorbar;
+%% MyMainScript
+
+tic;
+%% Super Moon Crop
+imageData = load('../data/superMoonCrop.mat');
+image = imageData.imageOrig;
+stretchedImage = myLinearContrastStretching(image);
+sharpImage = myUnsharpMasking(image,1.1,9,1.1);
+sharpImage = myLinearContrastStretching(sharpImage);
+myDisplayTwoImage(stretchedImage,sharpImage);
+%% Lion Crop
+imageData = load('../data/lionCrop.mat');
+image = imageData.imageOrig;
+stretchedImage = myLinearContrastStretching(image);
+sharpImage = myUnsharpMasking(image,1.1,9,1.6);
+sharpImage = myLinearContrastStretching(sharpImage);
+myDisplayTwoImage(stretchedImage,sharpImage);
+toc;
 ##### SOURCE END #####
 --></body></html>
