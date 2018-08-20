@@ -1,0 +1,35 @@
+%% MyMainScript
+
+tic;
+%% Barbara
+imageData = load('../data/barbara.mat');
+image = imageData.imageOrig;
+[len, wid] = size(image);
+corruptedImage = image + 0.05*(max(max(image))-min(min(image)))*randn(len);
+
+sigmaSpace = 1.6;
+sigmaIntensity = 13.4;
+windowSize = 4;
+out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
+rsmd = myRsmd(out,image);
+display(rsmd);
+myDisplayThreeImage(image,corruptedImage,out);
+
+out1 = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
+rsmd1 = myRsmd(out,image);
+display(rsmd);
+
+out2 = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
+rsmd2 = myRsmd(out,image);
+display(rsmd);
+
+out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
+rsmd = myRsmd(out,image);
+display(rsmd);
+
+out = myBilateralFiltering(corruptedImage, sigmaSpace, sigmaIntensity, windowSize);
+rsmd = myRsmd(out,image);
+display(rsmd);
+
+
+toc;
