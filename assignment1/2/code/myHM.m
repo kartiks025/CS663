@@ -1,4 +1,3 @@
-%% function file for myShrinkImageByFactorD 
 function contrastImg = myHM(myInput,myInputMask,myInputRef,myInputRefMask)
 	[len,mywidth,c] = size(myInput);
 	
