@@ -1,6 +1,5 @@
 function myReconstruction(train_mean, V, train_X, img, ks)
 	[d_tr, N_tr] = size(train_X);
-	% size(img)
 
 	h = 192;
 	w = 168;
@@ -15,6 +14,6 @@ function myReconstruction(train_mean, V, train_X, img, ks)
 		reconstructed_img = reshape(reconstructed_img, h, w);
 		subplot(3,3,k), subimage(reconstructed_img);
 		axis off;
-		txt = sprintf('Reconstruction with %d eigenvectors', dim);
+		txt = sprintf('Reconstruction K = %d', dim);
 		title(txt);
 end
