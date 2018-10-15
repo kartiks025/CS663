@@ -14,6 +14,7 @@ new_X = bsxfun(@minus,new_X,meanX);
 
 [train_mean, V] = myEigenFace(train_X, 'eig');
 
+V = V(:,1:23);
 coeffTrain = V'*train_X;
 coeffTest = V'*test_X;
 coeffNew = V'*new_X;
@@ -21,7 +22,7 @@ coeffNew = V'*new_X;
 expected1 = dsearchn(coeffTrain', coeffTest');
 sqrtDistances1 = sqrt(sum((coeffTest - coeffTrain(:,expected1(:))).^2));
 disp(sqrtDistances1(1));
-thresh = 2800;
+thresh = 1800; % Threshold value
 falseNegatives = 0;
 for i = 1:32*4
     if(sqrtDistances1(i)>thresh)
