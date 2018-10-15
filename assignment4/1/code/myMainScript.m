@@ -1,5 +1,3 @@
-%% MyMainScript
-
 tic;
 %% ORL dataset using eig
 [train_X, train_Y, test_X, test_Y] = myDataset('orl');
