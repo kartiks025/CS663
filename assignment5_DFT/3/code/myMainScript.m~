@@ -6,7 +6,7 @@ img = load('../data/image_low_frequency_noise.mat');
 img = img.Z;
 [m,n] = size(img);
 fftImg = logFourier(img);
-u1 = [236-m, ];
-v1
-% myNotchFilter(fftImg, 
+u1 = [236-m/2, 278-m];
+v1 = [247-n/2, 268-n];
+myNotchFilter(fftImg, u1, v1, 30);
 toc;

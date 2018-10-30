@@ -6,7 +6,7 @@ function[] = myNotchFilter(fftImg, u1, v1, thresh)
         for v = 1:n
             for i = 1:2
                 if ((u-u1(i))^2 + (v-v1(i))^2) <= thresh
-                    fftImg(u+m/2,v+m/2) = 0;
+                    fftImg(u+m/2,v+n/2) = 0;
                 end
             end
         end
