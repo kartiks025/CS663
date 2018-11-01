@@ -9,7 +9,7 @@ function myDisplayImage(img, color, title1)
     end
     daspect([1 1 1]);
 	axis on;
-% 	colorbar;
+    colorbar;
     title(title1);
     pause(3);
 end
