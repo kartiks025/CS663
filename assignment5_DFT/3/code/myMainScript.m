@@ -4,6 +4,7 @@ tic;
 %% Your code here
 img = load('../data/image_low_frequency_noise.mat');
 img = img.Z;
+myDisplayImage(img, false, 'Original image');
 [m,n] = size(img);
 fftImg = logFourier(img);
 u1 = [236-m/2, 278-m/2];

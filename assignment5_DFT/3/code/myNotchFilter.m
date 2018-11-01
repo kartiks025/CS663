@@ -15,10 +15,7 @@ function[] = myNotchFilter(fftImg, u1, v1, thresh)
     infftImg = ifft2(ifftshift(fftImg));
     img = real(infftImg);
     img = img(m/2+1:m+m/2, n/2+1:n+n/2);
-    figure;
-    imagesc(mat2gray(img));
-    colormap(gray);
-    colorbar;
+    myDisplayImage(img, false, 'restored image')
 end
     
                 
